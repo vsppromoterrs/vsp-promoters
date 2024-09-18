@@ -10,29 +10,29 @@ const allowedOrigins = [
   'https://vsppromoter-1794.web.app',
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not ' +
-                  'allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
     }
-
-    return callback(null, true);
   }
-}));
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+
 // Route to send email (implement in step 3)
 app.post('/send-email', require('./emailHandler'));
+
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
