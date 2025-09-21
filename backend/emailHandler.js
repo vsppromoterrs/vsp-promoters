@@ -7,15 +7,15 @@ const sendEmail = async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vsp.daatstudios@gmail.com',
-      pass: 'bxdg lzva vyez kqta', 
+      user: 'vsppromoterrs@gmail.com',
+      pass: 'ctlu zwcu njfk cgtc', 
     },
   });
 
   // Define email options
   const mailOptions = {
     from: email, // Sender email
-    to: 'vsp.daatstudios@gmail.com', // Recipient email
+    to: 'vsppromoterrs@gmail.com', // Recipient email
     subject: 'New Contact Form Submission',
     html: emailContent, // Use the HTML content you passed from the frontend
   };

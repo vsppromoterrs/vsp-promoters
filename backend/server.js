@@ -8,6 +8,8 @@ const port = 5000;
 const allowedOrigins = [
   'http://localhost:3000',
   'https://vsppromoter-1794.web.app',
+  'https://vsp-promoters.web.app',
+  'https://vsppromoters.com',
 ];
 
 const corsOptions = {
